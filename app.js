@@ -15,28 +15,18 @@ const refs = {
 
 refs.stopBtn.addEventListener("click", onStopBtnClick);
 refs.startBtn.addEventListener("click", () => {
-  refs.startBtn.setAttribute("disabled", "disabled");
-  const promises = colors.map(switchColors);
   intervalId = setInterval(() => {
-
+    refs.startBtn.disabled = true;
+    refs.body.style.backgroundColor = 
+      colors[randomIntegerFromInterval(0, colors.length)];
   }, 1000)
 });
 
 function onStopBtnClick() {
-  refs.startBtn.removeAttribute("disabled");
+  refs.startBtn.disabled = false;
   clearInterval(intervalId)
 }
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
-
-function switchColors(color) {
-  return new Promise((resolve, reject) => {
-      const randomColor = randomIntegerFromInterval(colors)
-    setTimeout(() => {
-        resolve(color)
-        refs.body.style.backgroundColor = randomColor;
-    }, 1000);
-  });
-}
