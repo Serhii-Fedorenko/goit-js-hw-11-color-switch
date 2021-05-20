@@ -17,14 +17,14 @@ refs.stopBtn.addEventListener("click", onStopBtnClick);
 refs.startBtn.addEventListener("click", () => {
   intervalId = setInterval(() => {
     refs.startBtn.disabled = true;
-    refs.body.style.backgroundColor = 
+    refs.body.style.backgroundColor =
       colors[randomIntegerFromInterval(0, colors.length)];
-  }, 1000)
+  }, 1000);
 });
 
 function onStopBtnClick() {
   refs.startBtn.disabled = false;
-  clearInterval(intervalId)
+  clearInterval(intervalId);
 }
 
 const randomIntegerFromInterval = (min, max) => {
