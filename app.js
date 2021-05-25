@@ -16,10 +16,10 @@ const refs = {
 refs.stopBtn.addEventListener("click", onStopBtnClick);
 refs.startBtn.addEventListener("click", () => {
   intervalId = setInterval(() => {
-    refs.startBtn.disabled = true;
     refs.body.style.backgroundColor =
-      colors[randomIntegerFromInterval(0, colors.length)];
+    colors[randomIntegerFromInterval(0, colors.length -1)];
   }, 1000);
+  refs.startBtn.disabled = true;
 });
 
 function onStopBtnClick() {
